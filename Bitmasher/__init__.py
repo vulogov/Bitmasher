@@ -10,7 +10,7 @@ from . key import genkey
 from . block import make_block
 from . next import next as bm_next
 from . crypto import encrypt, decrypt
-from . cryptobook import cryptobook_init, cryptobook_save
+from . cryptobook import cryptobook_init, cryptobook_save, cryptobook_load
 
 def init(**kw):
     namespace = {}

@@ -56,3 +56,17 @@ def cryptobook_save(namespace):
         _masher = f.getvalue()
         _d[id] = (_key, _masher)
     return msgpack.dumps(_d)
+
+def cryptobook_load(namespace, buffer):
+    used = dpget(namespace, "/cryptobook/used")
+    data = msgpack.loads(buffer, raw=True)
+    res = {}
+    for k in data:
+        _key, _masher = data[k]
+        f = io.BytesIO(_key)
+        key = np.load(f)
+        f = io.BytesIO(_masher)
+        masher = np.load(f)
+        res[k.decode('utf-8')] = (key, masher)
+    used.update(res)
+    return namespace
