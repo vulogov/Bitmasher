@@ -5,6 +5,7 @@ import io
 import uuid
 import numpy as np
 import queue
+import msgpack
 from dpath.util import new as dpnew
 from dpath.util import get as dpget
 from dpath.util import set as dpset
@@ -41,3 +42,17 @@ def cryptobook_get(namespace):
         namespace = cryptobook_add(namespace)
         return cryptobook_get(namespace)
     return namespace
+
+def cryptobook_save(namespace):
+    used = dpget(namespace, "/cryptobook/used")
+    _d = {}
+    for id in used:
+        key, masher = used[id]
+        f = io.BytesIO()
+        np.save(f, key)
+        _key = f.getvalue()
+        f = io.BytesIO()
+        np.save(f, masher)
+        _masher = f.getvalue()
+        _d[id] = (_key, _masher)
+    return msgpack.dumps(_d)
