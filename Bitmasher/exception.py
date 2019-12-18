@@ -1,0 +1,6 @@
+##
+##
+##
+
+class BitmasherKeysizeException(Exception):
+    pass
