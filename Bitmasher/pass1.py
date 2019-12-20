@@ -8,7 +8,7 @@ from dpath.util import get as dpget
 from dpath.util import set as dpset
 from . next import next as bm_next
 
-def pass1_encrypt(namespace, data):
+def pass1_encrypt(namespace, data=None):
     block_size = dpget(namespace, "/config/block.size")
     d = msgpack.dumps(data)
     namespace = bm_next(namespace)
@@ -44,7 +44,6 @@ def pass1_encrypt(namespace, data):
 
         b_block[8:len(src_block)+8] = src_block
         pass1_data.append((b_block, id, key, masher))
-        namespace = bm_next(namespace)
     return namespace
 
 def pass1_decrypt(namespace):

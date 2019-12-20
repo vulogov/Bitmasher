@@ -16,6 +16,7 @@ def genkey(namespace):
 
 def return_key(namespace):
     key_size = dpget(namespace, "/config/key.size")
-    k = np.random.randint(0,255, size=key_size, dtype='B')
+    max_rotation = (dpget(namespace, "/config/block.size")*2) - 1
+    k = np.random.randint(0, max_rotation, size=key_size, dtype='u4')
     m = np.random.randint(2, size=key_size, dtype='?')
     return (k, m)
