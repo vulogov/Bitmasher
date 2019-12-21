@@ -6,13 +6,12 @@ import uuid
 from dpath.util import new as dpnew
 from dpath.util import get as dpget
 from dpath.util import set as dpset
-from . key import genkey
-from . block import make_block
 from . next import next as bm_next
 from . crypto import encrypt, decrypt
-from . cryptobook import cryptobook_init, cryptobook_save, cryptobook_load
+from . cryptobook import cryptobook_init, cryptobook_save, cryptobook_load, cryptobook_write
+from . util import telegram
 
-def init(**kw):
+def init(*codebooks, **kw):
     namespace = {}
     dpnew(namespace, "/config", {})
     dpnew(namespace, "/cryptobook", {})
@@ -31,7 +30,14 @@ def init(**kw):
     dpnew(namespace, "/key/private", b'')
     dpnew(namespace, "/key/masher", b'')
     dpnew(namespace, "/key/id", None)
-    namespace = cryptobook_init(namespace)
-    namespace = bm_next(namespace)
     dpget(namespace, "/config").update(**kw)
+    namespace = cryptobook_init(namespace)
+    for cb in codebooks:
+        if isinstance(cb, str) is True:
+            cryptobook_load(namespace, cb)
+        elif hasattr(fp, 'read') is True:
+            cryptobook_load(namespace, cb.read())
+        else:
+            pass
+    namespace = bm_next(namespace)
     return namespace

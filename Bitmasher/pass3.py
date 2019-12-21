@@ -13,6 +13,7 @@ def pass3_encrypt(namespace):
         b = bitstring.BitString(data.tostring())
         c = 0
         for m in masher:
+            #print(m,key[c])
             if m is True:
                 b.rol(key[c])
             else:
@@ -29,6 +30,7 @@ def pass3_decrypt(namespace):
         b = bitstring.BitString(data.tostring())
         c = 0
         for m in masher:
+            #print(m, key[c])
             if m is True:
                 b.ror(key[c])
             else:

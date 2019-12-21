@@ -57,6 +57,13 @@ def cryptobook_save(namespace):
         _d[id] = (_key, _masher)
     return msgpack.dumps(_d)
 
+def cryptobook_write(namespace, *fp):
+    cb = cryptobook_save(namespace)
+    for f in fp:
+        if hasattr(f, 'write') is True:
+            f.write(cb)
+    return namespace
+
 def cryptobook_load(namespace, buffer):
     used = dpget(namespace, "/cryptobook/used")
     data = msgpack.loads(buffer, raw=True)

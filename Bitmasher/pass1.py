@@ -27,7 +27,6 @@ def pass1_encrypt(namespace, data=None):
         k = 0
         key_size = len(key)
         for e in b_block[:8]:
-            print(key[k], e, key[k] ^ e, block_size)
             b_block[c] = key[k] ^ e
             c += 1
             k += 1
@@ -37,7 +36,6 @@ def pass1_encrypt(namespace, data=None):
         for e in src_block:
             if k >= key_size:
                 k = 0
-            print(key[k], e, key[k] ^ e)
             src_block[c] = key[k] ^ e
             c += 1
             k += 1
@@ -70,6 +68,4 @@ def pass1_decrypt(namespace):
         total_data += np.array(d, dtype='B').tostring()
     data = msgpack.loads(total_data)
     dpset(namespace, "/block/cleartext", data)
-    print(data)
-
     return namespace
