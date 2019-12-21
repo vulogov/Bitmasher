@@ -1,10 +1,10 @@
 # Bitmasher - private key crypto algorithm based on bit buffer rotation and steganography
 
 ## Algorithm.
-  Bitmasher is based on three encryption ideas combined in three passes of the encryption.
+  Bitmasher is based on three encryption ideas combined in three passes of  encryption.
 
-  - XOR encryption of the block of the data with rotational key
-  - Mixing XOR encrypted block of data with random data
+  - XOR encryption of the data with rotational key
+  - Mixing XOR encrypted block of data with a random data
   - Bit-rotation ROR/ROL (ROR/ROL for decryption), based on two random keys: one defining the depth of the rotation, other - directionality of the rotation.
 
   So, in order to break encrypted block of data, you actually need to figure out two keys, and second stage mixing preventing statistical analysis. If you are interested to learn more about algorithm itself, please take a look at this slides. [Buffer bit-rotating cryptography with steganography](https://www.slideshare.net/VladimirUlogov1/short-presentation-of-the-bitmasher-privatekey-encryption)
