@@ -58,3 +58,28 @@ b'\x82\xda\x00$1ba990f9-6b43-4a9d-9bc1-a820'
 >>> print(decrypt(n, *d))
 b'This is a BIG secret'
 ```
+
+## Fun stuff
+
+  Let's say, you have to transmit your secret message, encrypted with Bitmasher to your secret correspondent over a radio waves. **LEGAL NOTE:** *this type of the operations is expressly prohibited by FCC rules and I am not responsible for the troubles you will get yourself into, if you will actually try this. So, do not do this for real.* Dust off your straight key or paddle and get your telegram formatted.
+```
+>>> d = encrypt(n, "This is a BIG secret")
+>>> d
+[('cd34242a-c174-4769-b945-23f805d684cf', b'\x16\xb.....
+```
+  After you get your encryption done ...
+```
+>>> tlg = telegram(d[0][1])
+>>> print(tlg)
+022 186 243 218 120 121 196 018
+089 191 101 201 184 042 085 108
+100 047 091 015 226 152 003 093
+111 121 108 086 182 134 061 035
+225 037 182 083 247 230 122 123
+044 072 100 097 135 029 090 080
+238 024 225 141 016 247 075 009
+...
+```
+  Breath deep and use your HAM radio skills for a something good.
+
+73
