@@ -9,7 +9,7 @@ except ImportError:
 
 name="Bitmasher"
 version="0.0"
-release="0.0.4"
+release="0.0.5"
 
 def load_requirements(fname):
     reqs = parse_requirements(fname, session="test")
