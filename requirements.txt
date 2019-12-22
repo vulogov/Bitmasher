@@ -1,6 +1,5 @@
 Arpeggio==1.9.0
 astropy==3.2.3
-Bitmasher==0.0.2
 bitstring==3.1.6
 bleach==3.1.0
 certifi==2019.11.28
