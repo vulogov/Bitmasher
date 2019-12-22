@@ -7,21 +7,28 @@ except ImportError:
     # for pip <= 9.0.3
     from pip.req import parse_requirements
 
-name="bund"
+name="Bitmasher"
 version="0.0"
-release="0.0.1"
+release="0.0.2"
 
 def load_requirements(fname):
     reqs = parse_requirements(fname, session="test")
     return [str(ir.req) for ir in reqs]
 
 setup(name=name,
-    setup_requires=['pytest-runner'],
+    description="Bit rotational encryption with steganography",
+    long_description_content_type="text/markdown",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+        "Operating System :: OS Independent",
+        "Topic :: Security :: Cryptography"
+    ],
+    python_requires='>=3.6',
     version=release,
-    description='BUND language interpreter library',
-    url='https://github.com/vulogov/py-bund',
+    url='https://github.com/vulogov/Bitmasher',
     author='Vladimir Ulogov',
-    author_email='vulogov@linkedin.com',
-    license='GPL3',
+    author_email='vladimir.ulogov@me.com',
+    license='MPL+2.0',
     install_requires=load_requirements("requirements.txt"),
     packages=find_packages())
