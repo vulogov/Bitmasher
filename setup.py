@@ -9,14 +9,18 @@ except ImportError:
 
 name="Bitmasher"
 version="0.0"
-release="0.0.2"
+release="0.0.3"
 
 def load_requirements(fname):
     reqs = parse_requirements(fname, session="test")
     return [str(ir.req) for ir in reqs]
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(name=name,
     description="Bit rotational encryption with steganography",
+    long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
         "Programming Language :: Python :: 3",
