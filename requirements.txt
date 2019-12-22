@@ -1,5 +1,6 @@
 Arpeggio==1.9.0
 astropy==3.2.3
+Bitmasher==0.0.4
 bitstring==3.1.6
 bleach==3.1.0
 certifi==2019.11.28
@@ -17,6 +18,7 @@ kiwisolver==1.1.0
 Logbook==1.4.3
 matplotlib==3.1.2
 more-itertools==8.0.2
+msgpack==0.6.2
 numpy==1.17.4
 pandas==0.25.3
 photutils==0.7.1
